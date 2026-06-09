@@ -1,0 +1,231 @@
+<div class="page-content">
+    <header class="top-header">
+        <h1 class="page-title text-center">پیگیری وضعیت سفارشات</h1>
+        <div class="notification-icon">
+            <i class="fas fa-bell"></i>
+            <span class="badge"></span>
+        </div>
+    </header>
+
+
+    <!-- پنل شیشه‌ای اصلی -->
+    <div class="orders-panel glass-panel">
+        
+        <!-- نوار تب‌ها (دسته‌بندی وضعیت‌ها) -->
+        <div class="tabs-bar">
+            <button class="tab-btn" data-target="pending">در انتظار بررسی</button>
+            <button class="tab-btn active" data-target="reviewing">در حال بررسی</button>
+            <button class="tab-btn" data-target="repairing">در حال تعمیر</button>
+            <button class="tab-btn" data-target="waiting-parts">در انتظار قطعه</button>
+            <button class="tab-btn" data-target="ready">آماده تحویل</button>
+            <button class="tab-btn" data-target="delivered">تحویل داده شده</button>
+        </div>
+
+        <!-- لیست کارت‌های سفارش (محتوای تب فعال) -->
+        <div class="orders-list" id="ordersList">
+            
+            <!-- نمونه یک کارت سفارش -->
+            <div class="order-card glass-panel" data-status="reviewing">
+                <!-- نوار پیشرفت عمودی کنار کارت -->
+                <div class="timeline-indicator active-indicator"></div>
+                
+                <div class="card-details">
+                    <p><i class="fas fa-hashtag"></i> کد سفارش: <strong>۱۲۳۴۵</strong></p>
+                    <p><i class="fas fa-laptop"></i> نوع دستگاه: <span>لپ‌تاپ گیمینگ</span></p>
+                    <p><i class="fas fa-wrench"></i> مشکل گزارش‌شده: <span>مشکل داغ شدن بیش از حد</span></p>
+                    <p><i class="far fa-clock"></i> زمان ثبت سفارش: <span>۱۴۰۲/۰۷/۱۰</span></p>
+                    <p><i class="fas fa-clipboard-list"></i> آخرین وضعیت: <span>در حال بررسی</span></p>
+                </div>
+
+                <div class="card-actions">
+                    <!-- دکمه مشاهده جزئیات که مودال را باز می‌کند -->
+                    <button class="glass-btn btn-cyan view-details-btn" data-order-id="12345">مشاهده جزئیات</button>
+                    <button class="glass-btn btn-purple"><i class="fas fa-comment-dots"></i> ارتباط با پشتیبان</button>
+                </div>
+            </div>
+            
+            <!-- کارت دوم برای نمایش در حالت در حال بررسی -->
+            <div class="order-card glass-panel" data-status="reviewing">
+                <div class="timeline-indicator active-indicator"></div>
+                <div class="card-details">
+                    <p><i class="fas fa-hashtag"></i> کد سفارش: <strong>۱۲۳۴۶</strong></p>
+                    <p><i class="fas fa-mobile-alt"></i> نوع دستگاه: <span>گوشی موبایل</span></p>
+                    <p><i class="fas fa-wrench"></i> مشکل گزارش‌شده: <span>شکستگی ال‌سی‌دی</span></p>
+                    <p><i class="far fa-clock"></i> زمان ثبت سفارش: <span>۱۴۰۲/۰۷/۱۱</span></p>
+                    <p><i class="fas fa-clipboard-list"></i> آخرین وضعیت: <span>در حال بررسی</span></p>
+                </div>
+                <div class="card-actions">
+                    <button class="glass-btn btn-cyan view-details-btn" data-order-id="12346">مشاهده جزئیات</button>
+                    <button class="glass-btn btn-purple"><i class="fas fa-comment-dots"></i> ارتباط با پشتیبان</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- ================= مودال مرکزی (طراحی دقیق بر اساس عکس) ================= -->
+<div class="modal-overlay" id="repairModal">
+    <div class="modal-box glass-panel">
+        
+        <div class="modal-header">
+            <div class="header-item">
+                <span class="label">کد سفارش:</span>
+                <span class="badge cyan-glow" id="modalOrderCode">ORD-98765</span> 
+            </div>
+            <div class="header-item">
+                <span class="label">وضعیت سفارش:</span>
+                <span class="badge cyan-glow">در حال تعمیر</span>
+            </div>
+        </div>
+
+        <div class="visual-timeline">
+            <div class="v-line"></div>
+            <div class="v-node active"></div>
+            <div class="v-node active"></div>
+            <div class="v-node current"></div>
+            <div class="v-node"></div>
+            <div class="v-node"></div>
+        </div>
+
+        <hr class="glass-divider">
+
+        <div class="modal-body">
+            <!-- بخش اول -->
+            <div class="section glass-card"  id="deviceInfo">
+                <h3>مشخصات دستگاه و مشتری</h3>
+                <div class="grid-2">
+                    <input type="text" class="glass-input" placeholder="مدل دستگاه" value="لپتاپ ایسوس ROG" readonly>
+                    <input type="text" class="glass-input" placeholder="نام مشتری" value="علی احمدی" readonly>
+                    <input type="text" class="glass-input" placeholder="اطلاعات تماس" value="09123456789" readonly>
+                </div>
+                <textarea class="glass-input" rows="3" placeholder="شرح مشکل دستگاه (توسط مشتری)"></textarea>
+                <button class="glass-btn primary w-100" id="approveRequestBtn">تایید درخواست و صدور کد سفارش</button>
+            </div>
+
+            <!-- بخش دوم (تغییر یافته) -->
+            <div class="section glass-card" id="initialReviwe">
+                <h3>تخصیص تکنسین و عیب یابی</h3>
+                <div class="flex-row">
+                    <div class="avatar">👤</div>
+                    <input type="text" class="glass-input flex-grow mb-0" placeholder="نام تکنسین">
+                </div>
+                <textarea class="glass-input mt-2" rows="2" placeholder="شرح اولیه عیب یابی توسط تعمیرکار"></textarea>
+                <input type="text" class="glass-input" placeholder="برآورد هزینه تعمیر (تومان)">
+                
+                <!-- گروه چک باکس ها در بخش دوم -->
+                <div class="checkbox-group flex-row mt-2">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="part-needed-cb"> نیاز به قطعه
+                    </label>
+                    <label class="checkbox-label" style="margin-right: 20px;">
+                        <input type="checkbox" id="unrepairable-cb"> غیر قابل تعمیر بودن دستگاه
+                    </label>
+                </div>
+
+                <!-- فیلد علت غیرقابل تعمیر (مخفی) -->
+                <div id="unrepairable-reason" class="hidden mt-2">
+                    <input type="text" class="glass-input" placeholder="علت غیر قابل تعمیر بودن دستگاه">
+                </div>
+
+                <!-- پنل درخواست قطعات (مخفی) -->
+                <div id="parts-panel" class="nested-glass-panel hidden mt-3">
+                    <h4 style="margin-top: 0;">درخواست قطعه (توسط تکنسین)</h4>
+                    <!-- کادر توضیحات قطعات جایگزین فیلدهای قبلی شد -->
+                    <textarea class="glass-input" id="initialReviewDesc" rows="2" placeholder="شرح قطعات مورد نیاز... (مثال: نیاز به یک عدد هارد 1TB و یک باتری اورجینال)"></textarea>
+                    <button class="glass-btn primary mt-2" id="sendToResponsibleForPartsBtn">ارسال به مسئول قطعات</button>
+                    
+                    <!-- بخش پاسخ مسئول قطعات (جدول پویا) -->
+                    <div class="parts-manager-response mt-3">
+                        <h5 style="margin-top: 0; margin-bottom: 15px;">پاسخ و تامین قطعات (توسط مسئول قطعات)</h5>
+                        
+                        <!-- هدر جدول -->
+                        <div class="grid-3 mb-1" style="font-size: 0.85em; color: var(--text-secondary); padding: 0 5px;">
+                            <span>نام قطعه</span>
+                            <span>تعداد</span>
+                            <span>هزینه (تومان)</span>
+                        </div>
+                        
+                        <!-- کانتینر ردیف های قطعات -->
+                        <div id="dynamic-parts-container">
+                            <!-- ردیف پیش‌فرض -->
+                            <div class="grid-3 flex-align-center mb-2">
+                                <input type="text" class="glass-input mb-0" placeholder="مثال: رم 8 گیگ">
+                                <input type="number" class="glass-input mb-0" placeholder="1" min="1" value="1">
+                                <div class="flex-row flex-grow">
+                                    <input type="text" class="glass-input mb-0 flex-grow" placeholder="مبلغ">
+                                    <!-- دکمه حذف برای ردیف اول گذاشته نمیشود تا حداقل یک ردیف بماند -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button id="add-part-btn" class="glass-btn mt-2" type="button" style="font-size: 0.9em; padding: 8px 15px;">+ افزودن سطر قطعه</button>
+                        
+                        <textarea class="glass-input mt-3" rows="2" placeholder="توضیحات اضافی مسئول قطعات (اختیاری)"></textarea>
+                        <button class="glass-btn w-100 mt-2" id="sentToTechnicianBtn" style="background: rgba(0, 123, 255, 0.1); border-color: var(--accent-blue); color: var(--accent-blue);">تایید قطعات و ارسال قیمت به تکنسین</button>
+                    </div>
+                </div>
+
+                <button class="glass-btn primary w-100 mt-4" id="sendEstimateBtn">تایید اطلاعات و ارسال درخواست به مشتری برای تایید هزینه</button>
+            </div>
+
+            <!-- بخش تایید هزینه توسط مشتری (جدید) -->
+            <div class="section glass-card" id="customerApprovalSection" style="display: none; border: 2px solid var(--accent-blue);">
+                <h3>تایید هزینه و تعمیر (مخصوص مشتری)</h3>
+                <p class="cost-alert" style="margin-bottom: 10px; font-weight: bold;">هزینه برآوردی تعمیر: <span id="estimatedCostDisplay">...</span> تومان</p>
+                <textarea id="customerFinalComment" class="glass-input" rows="2" placeholder="توضیحات نهایی شما (اختیاری)"></textarea>
+                
+                <div class="grid-2 mt-2">
+                    <button class="glass-btn btn-danger w-100" id="rejectRepairBtn">انصراف از تعمیر</button>
+                    <button class="glass-btn primary w-100" id="approveRepairBtn">تایید هزینه و شروع تعمیر</button>
+                </div>
+            </div>
+
+            <!-- بخش سوم (تغییر یافته) -->
+            <div class="section glass-card" id="repair">
+                <h3>مراحل نهایی تعمیر</h3>
+                <textarea class="glass-input" rows="4" placeholder="شرح کامل مراحل تعمیر توسط تعمیرکار"></textarea>
+                
+                <div class="checkbox-group mt-2">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="cancel-cb"> انصراف از تعمیر توسط مشتری
+                    </label>
+                    <div id="cancel-reason" class="hidden mt-2">
+                        <input type="text" class="glass-input" placeholder="علت انصراف">
+                    </div>
+                </div>
+
+                <input type="text" class="glass-input mt-3" placeholder="تعیین هزینه نهایی (تومان)">
+                <textarea class="glass-input mt-2" rows="2" placeholder="توضیحات اضافی"></textarea>
+                <button class="glass-btn primary w-100 mt-2" id="sendToAdminBtn">ارسال به پذیرشگر و صدور فاکتور اولیه</button>
+            </div>
+
+            <!-- بخش چهارم -->
+            <div class="section glass-card" id="invoice">
+                <h3>صدور فاکتور</h3>
+                <button class="glass-btn primary w-100 glow-pulse" id="sendInvoiceBtn">صدور فاکتور نهایی و ارسال اعلان آماده تحویل به مشتری</button>
+                <!-- این دکمه مخصوص مشتری است (در زمان آماده تحویل نمایش داده میشود) -->
+                <button class="glass-btn btn-cyan w-100 mt-2" id="customerViewInvoiceBtn" style="display: none;">
+                    <i class="fas fa-file-invoice"></i> مشاهده فاکتور نهایی
+                </button>
+
+            </div>
+
+            <!-- بخش پنجم -->
+            <div class="section glass-card" id="delivery">
+                <h3>تحویل و گارانتی</h3>
+                <div class="grid-2">
+                    <input type="date" class="glass-input" title="تاریخ تحویل دستگاه">
+                    <input type="date" class="glass-input" title="پایان تاریخ گارانتی">
+                </div>
+                <button class="glass-btn primary w-100 mt-3" id="confirmDeliveryBtn">تحویل دستگاه به مشتری</button>
+            </div>
+
+            <div class="modal-footer">
+                <button class="glass-btn" id="closeModalBtn">بستن</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
