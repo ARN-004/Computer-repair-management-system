@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد مشتری | سیستم تعمیرات</title>
+    <!-- اتصال فونت وزیرمتن برای تایپوگرافی زیبای فارسی -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <!-- اتصال کتابخانه FontAwesome برای آیکون‌ها -->
+    <link rel="stylesheet" href="../css/all.min.css">
+    <!-- اتصال فایل CSS -->
+    <!-- در فلسک این خط به این شکل تغییر میکند: <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/customer/dashboardCustomer.css">
+    <link rel="stylesheet" href="./styles/customer/history.css">
+    <link rel="stylesheet" href="./styles/customer/invoice.css">
+    <link rel="stylesheet" href="./styles/customer/newRequest.css">
+    <link rel="stylesheet" href="./styles/customer/notification.css">
+    <link rel="stylesheet" href="./styles/customer/profile.css">
+    <link rel="stylesheet" href="./styles/customer/status.css">
+</head>
+<body>
+
+    
+    <div class="dashboard-wrapper">
+        <!-- پنل اصلی شیشه ای -->
+        <div class="glass-panel main-container">
+            
+            <!-- سایدبار (منوی سمت راست) -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <button class="menu-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>
+                </div>
+                <ul class="menu-list">
+                    <li class="active"><a href="/dashboard" data-link class="nav-link"><i class="fa-solid fa-house"></i> داشبورد</a></li>
+                    <li><a href="/newRequest" data-link class="nav-link"><i class="fa-solid fa-pen-to-square"></i> ثبت درخواست جدید</a></li>
+                    <li><a href="/status" data-link class="nav-link"><i class="fa-solid fa-box-open"></i> پیگیری وضعیت سفارشات</a></li>
+                    <li><a href="/notification" data-link class="nav-link"><i class="fa-regular fa-bell"></i> اعلانات</a></li>
+                    <li><a href="/history" data-link class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> سوابق تعمیرات</a></li>
+                    <!-- <li><a href="/" data-link class="nav-link"><i class="fa-solid fa-book-open"></i> مقالات آموزشی</a></li> -->
+                    <!-- <li><a href="/" data-link class="nav-link"><i class="fa-solid fa-circle-info"></i> درباره ما</a></li> -->
+                    <!-- <li><a href="/" data-link class="nav-link"><i class="fa-solid fa-gear"></i> تنظیمات</a></li> -->
+                </ul>
+                <div class="logout">
+                    <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> خروج از سیستم</a>
+                </div>
+            </aside>
+
+            <!-- محتوای اصلی -->
+            <main class="content-area" id="app-content">
+            </main>
+        </div>
+    </div>
+
+    <div id="modal-content"></div>
+
+    <script type="module" src="./js/router-customer.js" ></script>
+</body>
+</html>

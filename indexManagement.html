@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>داشبورد مشتری | سیستم تعمیرات</title>
+    <!-- اتصال فونت وزیرمتن برای تایپوگرافی زیبای فارسی -->
+    <!-- <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.0.0/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" /> -->
+    <!-- اتصال کتابخانه FontAwesome برای آیکون‌ها -->
+    <link rel="stylesheet" href="./css/all.min.css">
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+    <!-- اتصال فایل CSS -->
+    <!-- در فلسک این خط به این شکل تغییر میکند: <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/management/dashboardManagement.css">
+    <link rel="stylesheet" href="./styles/management/deviceAcceptance.css">
+    <link rel="stylesheet" href="./styles/management/modalRepair.css">
+    <link rel="stylesheet" href="./styles/management/repairOrder.css">
+    <link rel="stylesheet" href="./styles/management/customers.css">
+    <link rel="stylesheet" href="./styles/management/notificationManagement.css">
+    <link rel="stylesheet" href="./styles/management/invoiceManagement.css">
+    <link rel="stylesheet" href="./styles/management/reports.css">
+    <link rel="stylesheet" href="./styles/management/usersManagement.css">
+    <link rel="stylesheet" href="./styles/management/profile.css">
+    <link rel="stylesheet" href="./styles/management/createInvoice.css">
+</head>
+<body>
+
+    <div class="dashboard-wrapper">
+
+        <div class="main-container">
+            <!-- منوی کناری (Sidebar) - در حالت RTL سمت راست قرار می‌گیرد -->
+            <aside class="sidebar glass-panel" id="sidebar">
+                <div class="sidebar-header">
+                <!-- دکمه سه نقطه برای کوچک/بزرگ کردن منو -->
+                    <button id="toggle-sidebar-btn" class="menu-btn" title="تغییر اندازه منو">
+                        <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </button>
+                    <div class="profile-info">
+                        <div class="role-badge">Role: Manager</div>
+                        <div class="avatar"><i class="fa-solid fa-user"></i></div>
+                    </div>
+                </div>
+
+                <!-- لیست منوها - مناسب برای تولید پویا در Flask -->
+                <ul class="nav-menu">
+                    <li class="active"><a href="/dashboard" data-link class="nav-link"><i class="fa-solid fa-house"></i> <span>داشبورد</span></a></li>
+                    <li><a href="/deviceAcceptance" data-link class="nav-link"><i class="fa-solid fa-mobile-screen"></i> <span>پذیرش دستگاه</span></a></li>
+                    <li><a href="/repairOrder" data-link class="nav-link"><i class="fa-solid fa-clipboard-list"></i> <span>سفارشات تعمیر</span></a></li>
+                    <!-- <li><a href="#" data-link class="nav-link"><i class="fa-solid fa-clipboard-user"></i> <span>وظایف تکنسین‌ها</span></a></li> -->
+                    <!-- <li><a href="#" data-link class="nav-link"><i class="fa-solid fa-boxes-stacked"></i> <span>انبار و قطعات</span></a></li> -->
+                    <!-- <li><a href="#" data-link class="nav-link"><i class="fa-solid fa-tags"></i> <span>درخواست‌های قطعه</span></a></li> -->
+                    <li><a href="/customers" data-link class="nav-link"><i class="fa-solid fa-users"></i> <span>مشتریان</span></a></li>
+                    <li><a href="/invoices" data-link class="nav-link"><i class="fa-solid fa-file-invoice-dollar"></i> <span>فاکتورها و پرداخت‌ها</span></a></li>
+                    <!-- <li><a href="#" data-link class="nav-link"><i class="fa-regular fa-comments"></i> <span>چت داخلی</span></a></li> -->
+                    <li><a href="/notification" data-link class="nav-link"><i class="fa-regular fa-bell"></i> <span>اطلاعیه‌ها</span></a></li>
+                    <li><a href="/reports" data-link class="nav-link"><i class="fa-solid fa-chart-line"></i> <span>گزارش‌ها و تحلیل</span></a></li>
+                    <li><a href="/usersManagement" data-link class="nav-link"><i class="fa-solid fa-user-gear"></i> <span>مدیریت کاربران و نقش‌ها</span></a></li>
+                    <!-- <li><a href="#" data-link class="nav-link"><i class="fa-solid fa-gear"></i> <span>تنظیمات سیستم</span></a></li> -->
+                </ul>
+                <div class="logout">
+                    <a href="#"><i class="fa-solid fa-arrow-right-from-bracket"></i> خروج از سیستم</a>
+                </div>
+            </aside>
+
+            <main class="main-content" id="app-content">
+            </main>
+
+        </div>
+
+    </div>
+
+    <div id="modal-content"></div>
+
+    <script type="module" src="./js/router.js" ></script>
+</body>
+</html>
