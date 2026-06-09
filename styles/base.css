@@ -1,0 +1,391 @@
+/* -----------------------------------------------
+   فایل base.css – استایل یکپارچه برای تمام صفحات
+   برگرفته از طراحی شیشه‌ای (Glassmorphism) داشبورد
+-------------------------------------------------- */
+
+/* ---------- متغیرهای سراسری ---------- */
+:root {
+    /* رنگ‌های اصلی */
+    --primary-bg: rgba(0, 0, 0, 0.2);
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-highlight: rgba(255, 255, 255, 0.5);
+    
+    /* رنگ‌های متن */
+    --text-primary: #fff;
+    --text-secondary: #e0e0e0;
+    --text-dark: #2f3542;
+    
+    /* رنگ‌های تاکید */
+    --accent-cyan: #64ffda;
+    --accent-blue: #3498db;
+    --accent-red: #ff6b6b;
+    --accent-green: #4ade80;
+    
+    /* اندازه‌ها */
+    --sidebar-width: 250px;
+    --border-radius-lg: 20px;
+    --border-radius-md: 12px;
+    --border-radius-sm: 8px;
+    --transition: all 0.3s ease;
+    
+    /* فونت */
+    --font-family: 'Vazirmatn', sans-serif;
+}
+
+/* ---------- ریست و پایه ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+body {
+    background-image: url("../aks/background3.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: var(--text-primary);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* ---------- کانتینر اصلی (مشابه dashboard-wrapper) ---------- */
+.dashboard-wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    max-width: 1200px;
+    overflow: hidden;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* پنل شیشه‌ای اصلی (برای هر دو کلاس main-container و glass-panel) */
+.main-container,
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(6.5px);
+    -webkit-backdrop-filter: blur(6.5px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    /* overflow: hidden; */
+}
+
+/* ---------- چیدمان دوتکه (سایدبار + محتوا) ---------- */
+.main-container {
+    display: flex;
+    height: 100%;
+    min-height: 600px;
+    flex-grow: 1;
+    overflow-y: auto;
+    background: var(--glass-bg);
+    background: rgba(15, 25, 45, 0.5); /* کمی تیره‌تر برای کنتراست */
+    /* padding-bottom: 30px; */
+}
+
+/* ---------- سایدبار (مشترک بین هر دو صفحه) ---------- */
+.sidebar {
+    width: var(--sidebar-width);
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 1px solid var(--glass-border);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 0 1.5rem 1rem;
+    text-align: left;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar.collapsed .sidebar-header {
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* دکمه منو (سه نقطه) */
+.menu-btn,
+.icon-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-primary);
+    padding: 0.5rem 0.8rem;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.sidebar.collapsed .profile-info .role-badge {
+    display: none; /* مخفی کردن متن در حالت کوچک */
+}
+
+.role-badge {
+    background: rgba(255,255,255,0.3);
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #e2e8f0; /*rgba(255,255,255,0.2)*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a0aec0; /*#fff*/
+}
+
+/* لیست منوها – پشتیبانی از دو کلاس menu-list و nav-menu */
+.menu-list,
+.nav-menu {
+    list-style: none;
+    flex-grow: 1;
+}
+
+.menu-list li a,
+.nav-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.menu-list li a i,
+.nav-menu li a i {
+    width: 25px;
+    margin-left: 10px;
+    font-size: 1.1rem;
+}
+
+.menu-list li:hover a,
+.nav-menu li:hover a {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.menu-list li.active a,
+.nav-menu li.active a {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+    border-right: 3px solid var(--accent-red);
+}
+
+/* دکمه خروج */
+.logout {
+    margin-top: auto;
+}
+
+.logout a {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: var(--accent-red);
+    text-decoration: none;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+.logout a i {
+    margin-left: 10px;
+}
+
+.logout a:hover {
+    background: rgba(255, 107, 107, 0.1);
+}
+
+/* مخفی کردن متن‌ها در حالت collapsed */
+.sidebar.collapsed .nav-menu a span {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}
+.sidebar.collapsed .nav-menu a {
+    justify-content: center;
+}
+.sidebar.collapsed .nav-menu a i {
+    font-size: 1.2rem;
+}
+
+/* ---------- محتوای اصلی ---------- */
+/* پشتیبانی از هر دو کلاس content-area و main-content */
+.content-area,
+.main-content {
+    flex-grow: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: auto;
+}
+
+/* ---------- هدر بالای صفحه ---------- */
+.top-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-header h2,
+.page-title {
+    /* color: #000; */
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    /* text-shadow: 0 0 10px rgba(100, 255, 218, 0.3); */
+}
+
+/* آیکون اعلان */
+.notification-icon {
+    position: relative;
+    background: rgba(255, 255, 255, 0.3);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    color: #333;
+    font-size: 1.2rem;
+}
+
+.notification-icon .badge,
+.notification-dot {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4757;
+    color: #fff;
+    font-size: 0.7rem;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.form-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    background: rgba(15, 25, 45, 0.5); /* کمی تیره‌تر برای کنتراست */
+}
+
+/* ---------- المان‌های فرم و ورودی (شیشه‌ای) ---------- */
+.glass-input {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-sm);
+    padding: 0.8rem 1rem;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    width: 100%;
+    transition: var(--transition);
+}
+
+.glass-input:focus {
+    outline: none;
+    border-color: var(--accent-cyan);
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
+}
+
+.glass-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* دکمه شیشه‌ای (برای فیلتر و ...) */
+.glass-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-sm);
+    padding: 0.6rem 1.2rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.glass-btn.primary {
+    background: var(--accent-cyan);
+    color: #000;
+    border: none;
+    /* background: rgba(100, 255, 218, 0.1);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan); */
+}
+
+.glass-btn.primary:hover {
+    filter: brightness(0.9);
+}
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    /* background: rgba(100, 255, 218, 0.2);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3); */
+}
+
+/* ---------- کارت‌ها و بخش‌های دیگر (مشترک) ---------- */
+/* کارت سوابق (record-card) */
+.record-card {
+    background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(100,255,218,0.05));
+    border-radius: var(--border-radius-md);
+    padding: 1.25rem;
+    transition: var(--transition);
+}
+
+.record-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(100, 255, 218, 0.1);
+}
+
+/* ---------- اسکرول‌بار سفارشی ---------- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(100, 255, 218, 0.3);
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-cyan);
+}

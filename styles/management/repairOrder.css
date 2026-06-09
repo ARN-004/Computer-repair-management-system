@@ -1,0 +1,210 @@
+/* 
+   repair_dashboard.css
+   وابسته به متغیرهای تعریف شده در base.css
+*/
+
+/* فاصله دهی عمومی */
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.full-width { width: 100%; }
+.hidden { display: none !important; }
+
+/* ================= هدر و تولبار ================= */
+.control-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    border-radius: 30px;
+}
+
+.glass-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+}
+
+.icon-btn {
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    justify-content: center;
+}
+
+.filter-search-group {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+    top: 5px;
+}
+
+.glass-input {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 10px 15px 10px 40px;
+    color: white;
+    outline: none;
+    width: 250px;
+    transition: width 0.3s;
+}
+
+.glass-input:focus {
+    width: 300px;
+    border-color: var(--accent-cyan);
+}
+
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+}
+
+.filter-dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 120%;
+    right: 0;
+    min-width: 160px;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.filter-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: var(--text-primary);
+    padding: 10px 20px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.2s;
+}
+
+.dropdown-content a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+/* آمار */
+.stats-container {
+    display: flex;
+    gap: 10px;
+}
+.stat-chip {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    padding: 5px 15px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.stat-label { font-size: 0.75rem; color: var(--text-secondary); }
+.stat-value { font-size: 1.2rem; font-weight: bold; color: var(--accent-cyan); }
+
+/* ================= تب‌های مراحل (Segmented Control) ================= */
+.stage-tabs {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 10px;
+    gap: 10px;
+    margin-bottom: -15px;
+    border-radius: 30px;
+}
+
+.stage-tab { 
+    background: transparent; 
+    border: 1px solid var(--glass-border); 
+    color: var(--text-secondary); 
+    padding: 8px 15px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    transition: 0.3s; 
+    white-space: nowrap; 
+}
+
+.stage-tab.active, .stage-tab:hover { 
+    background: var(--accent-cyan); 
+    color: #000; 
+    font-weight: bold; 
+}
+
+/* ================= گرید کارت‌های سفارش ================= */
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+.order-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.3s;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+}
+.order-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+
+.card-top-row, .card-bottom-row { display: flex; justify-content: space-between; align-items: center; }
+.device-icon { font-size: 1.5rem; color: var(--text-secondary); }
+
+.tracking-pill { padding: 5px 12px; border-radius: 15px; font-size: 0.85rem; font-weight: bold; background: rgba(0,0,0,0.3); border: 1px solid var(--accent-cyan); color: var(--accent-cyan); }
+.status-badge { padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; background: rgba(0,0,0,0.3); border: 1px solid var(--cat-repair); color: var(--cat-repair); }
+
+.card-info p { margin: 5px 0; font-size: 0.9rem; color: var(--text-primary); }
+.card-info i { width: 20px; text-align: center; color: var(--text-secondary); }
+.issue-line { color: #facc15 !important; font-size: 0.85rem !important; }
+
+/* دکمه‌ها */
+.btn-small { padding: 6px 12px; font-size: 0.8rem; border-radius: 15px; cursor: pointer; }
+.outline-btn { border: 1px solid var(--text-secondary); background: transparent; color: var(--text-secondary); }
+.neon-glow { box-shadow: 0 0 10px var(--accent-cyan); border-color: var(--accent-cyan); color: var(--accent-cyan); }
+
+/* کارت سفارش */
+.card-info { margin-top: 10px; }
+.status-line { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px; }
+.card-bottom-row.mt-1 { margin-top: auto; padding-top: 15px; }
+
+/* تنظیمات هدر و تولبار */
+.flex-header { display: flex; justify-content: flex-start; align-items: center; gap: 30px; }
+.search-large { width: 400px; max-width: 100%; }
+.flex-toolbar { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+.stats-row { display: flex; gap: 15px; }
+.stat-badge { background: rgba(255,255,255,0.05); padding: 8px 15px; border-radius: 8px; border: 1px solid var(--glass-border); font-size: 0.9rem; }
+.stat-badge span { font-weight: bold; color: var(--accent-cyan); margin-right: 5px; }
+.filters-row { display: flex; gap: 10px; }
+
+
+
+/* بخش جدید اضافه شده برای غیرفعال کردم یه بخش از مدال */
+.disabled-section {
+    opacity: 0.6;
+    pointer-events: none; /* جلوگیری از کلیک و تایپ */
+    filter: grayscale(0.5);
+}

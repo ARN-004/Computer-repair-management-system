@@ -1,0 +1,214 @@
+/* تنظیمات هدر شامل سرچ و فیلتر */
+.header-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    flex-direction: row; /* RTL - Title on Right, Actions on Left */
+}
+
+.header-left {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box .search-icon {
+    position: absolute;
+    left: 10px;
+    color: var(--accent-cyan);
+    pointer-events: none;
+}
+
+.search-box input {
+    padding-left: 35px;
+    width: 250px;
+}
+
+.filter-select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-left: 30px;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%2364ffda" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: left 5px center;
+}
+
+/* استایل دکمه‌های نئونی */
+.neon-btn {
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.4), inset 0 0 5px rgba(100, 255, 218, 0.2);
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(100, 255, 218, 0.5);
+}
+
+.neon-btn:hover {
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.6), inset 0 0 10px rgba(100, 255, 218, 0.3);
+}
+
+/* تنظیمات کانتینر جدول */
+.table-container {
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.glass-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+}
+
+.glass-table th {
+    color: var(--accent-cyan);
+    padding: 15px;
+    border-bottom: 2px solid var(--glass-border);
+    font-weight: bold;
+}
+
+.glass-table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    vertical-align: middle;
+}
+
+/* افکت هاور روی ردیف‌های جدول */
+.glass-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.glass-table tbody tr:hover {
+    background-color: rgba(100, 255, 218, 0.05);
+}
+
+.view-details-btn {
+    padding: 6px 15px;
+    font-size: 0.85rem;
+    background: rgba(100, 255, 218, 0.1);
+    color: var(--text-primary);
+}
+
+.view-details-btn:hover {
+    background: rgba(100, 255, 218, 0.2);
+    color: var(--accent-cyan);
+}
+
+/* ========================================= */
+/* استایل‌های مربوط به مدال (پنجره شناور) */
+/* ========================================= */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(10, 25, 47, 0.6);
+    backdrop-filter: blur(8px); /* افکت تار شدن پس‌زمینه */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.modal-box {
+    width: 90%;
+    max-width: 600px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 0 30px rgba(100, 255, 218, 0.15);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.hidden .modal-box {
+    transform: translateY(-50px);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+}
+
+.modal-header h3 {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+}
+
+.close-modal-btn {
+    background: none;
+    border: none;
+    color: var(--accent-red);
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-shadow: 0 0 5px rgba(255, 77, 79, 0.5);
+    transition: 0.3s;
+}
+
+.close-modal-btn:hover {
+    text-shadow: 0 0 15px rgba(255, 77, 79, 0.8);
+}
+
+.modal-body {
+    padding: 10px 0;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-item.full-width {
+    grid-column: span 2;
+}
+
+.info-item label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.read-only-box {
+    background: rgba(255, 255, 255, 0.03);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 45px;
+}
+
+.mask-text {
+    letter-spacing: 2px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-start; /* دکمه‌ها در سمت چپ */
+    gap: 15px;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border);
+}

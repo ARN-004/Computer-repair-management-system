@@ -1,0 +1,178 @@
+/* تنظیمات چیدمان اصلی فاکتور */
+.invoice-container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* هدر فاکتور (اطلاعات پایه) */
+.invoice-header {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+/* ورودی‌های فقط خواندنی (ReadOnly) - ظاهری متفاوت برای تمایز */
+input[readonly] {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-secondary);
+}
+
+/* ساختار جدول اقلام */
+.invoice-items {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 3fr 1fr 2fr 2fr 40px; /* ستون آخر برای دکمه حذف */
+    gap: 15px;
+    padding: 0 10px;
+    color: var(--text-secondary);
+    font-weight: bold;
+    text-align: center;
+}
+
+.item-row {
+    display: grid;
+    grid-template-columns: 3fr 1fr 2fr 2fr 40px;
+    gap: 15px;
+    align-items: center;
+}
+
+.item-row input {
+    text-align: center;
+}
+
+.item-row .item-desc {
+    text-align: right;
+}
+
+/* دکمه افزودن ردیف (+) */
+.add-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    color: var(--accent-cyan);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.2);
+}
+
+.add-btn:hover {
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+/* دکمه حذف ردیف */
+.remove-row-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-red);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.remove-row-btn:hover {
+    text-shadow: 0 0 10px var(--accent-red);
+}
+
+/* فوتر فاکتور (توضیحات و مالی) */
+.invoice-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.notes-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.summary-section {
+    width: 350px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(100, 255, 218, 0.05); /* پس زمینه ملایم برای متمایز شدن */
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.summary-row span {
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.summary-row input {
+    width: 150px;
+    text-align: left;
+    direction: ltr;
+}
+
+/* هایلایت کردن مبلغ قابل پرداخت */
+.total-payable span {
+    color: var(--accent-cyan);
+    font-size: 1.1rem;
+}
+
+.highlight-input {
+    background: rgba(100, 255, 218, 0.1) !important;
+    border-color: var(--accent-cyan) !important;
+    color: var(--accent-cyan) !important;
+    font-weight: bold;
+    font-size: 1.1rem !important;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+}
+
+/* دکمه‌های پایانی */
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.btn-submit {
+    font-size: 1rem;
+    padding: 12px 30px;
+}
+
+.btn-cancel {
+    color: var(--accent-red);
+    border-color: var(--accent-red);
+}
+.btn-cancel:hover {
+    background: rgba(255, 77, 79, 0.1);
+}

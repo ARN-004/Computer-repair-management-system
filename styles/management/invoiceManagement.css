@@ -1,0 +1,154 @@
+
+
+/* هدر و کنترل‌ها */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* استایل ورودی‌ها و کلیدها با حالت شیشه‌ای */
+.glass-input, .glass-select {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 8px 15px;
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+}
+
+.glow-btn {
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.4);
+    transition: all 0.3s ease;
+}
+.glow-btn:hover {
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.8);
+}
+
+/* شبکه کارت‌های فاکتور */
+.invoice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* کارت فاکتور */
+.invoice-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.invoice-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    border-color: var(--accent-cyan);
+}
+
+/* نشان‌ها (Badges) */
+.badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+.badge-buy { background: rgba(255, 77, 79, 0.2); color: var(--accent-red); }
+.badge-sell { background: rgba(100, 255, 218, 0.2); color: var(--accent-cyan); }
+.badge-status.paid { background: rgba(74, 222, 128, 0.2); color: var(--cat-repair); }
+.badge-status.pending { background: rgba(251, 191, 36, 0.2); color: var(--cat-offer); }
+
+/* دکمه‌های پایین کارت */
+.card-footer {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+.action-btn {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid var(--glass-border);
+    background: transparent;
+    color: var(--text-primary);
+}
+.view-btn { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+
+/* ----- استایل‌های مدال (پاپ‌آپ) ----- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 25, 47, 0.8);
+    backdrop-filter: blur(5px);
+    display: none; /* پنهان در حالت پیش‌فرض */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    width: 80%;
+    max-width: 900px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.modal-title-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.close-btn {
+    background: none; border: none;
+    color: var(--accent-red);
+    font-size: 1.5rem; cursor: pointer;
+}
+
+.info-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+
+/* استایل جدول داخل مدال */
+.glass-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+.glass-table th, .glass-table td {
+    padding: 12px; text-align: right;
+    border-bottom: 1px solid var(--glass-border);
+}
+.glass-table th { background: rgba(255, 255, 255, 0.05); color: var(--accent-cyan); }
+
+.invoice-summary-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.summary-totals {
+    padding: 15px; width: 300px;
+}
+.payable { color: var(--accent-cyan); margin-top: 10px; border-top: 1px solid var(--glass-border); padding-top: 10px;}

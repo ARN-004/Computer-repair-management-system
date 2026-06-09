@@ -1,0 +1,203 @@
+/* -----------------------------------------------
+   استایل‌های اختصاصی صفحه پروفایل (profile-custom.css)
+   مبتنی بر متغیرهای base.css
+-------------------------------------------------- */
+
+/* ---------- کانتینر اصلی فرم پروفایل ---------- */
+.profile-container {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.profile-header h2 {
+    color: var(--text-primary);
+    margin: 0;
+}
+
+/* ---------- چیدمان آواتار و فرم (ردیف) ---------- */
+.profile-content {
+    display: flex;
+    flex-direction: row-reverse; /* آواتار در سمت راست */
+    gap: 40px;
+}
+
+/* ---------- سایدبار پروفایل (آواتار) ---------- */
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    text-align: center;
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 15px;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--accent-cyan);
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.2);
+}
+
+.camera-btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.user-name {
+    margin: 10px 0 5px;
+    color: var(--text-primary);
+}
+
+.user-role {
+    margin: 0;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+}
+
+/* ---------- فرم و گرید دو ستونه ---------- */
+.profile-form {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.9em;
+    color: var(--text-primary);
+}
+
+/* ---------- خط جداکننده ---------- */
+.divider {
+    border: none;
+    border-top: 1px solid var(--glass-border);
+    margin: 10px 0;
+}
+
+/* ---------- سوییچ‌های تنظیمات (Toggle Switch) ---------- */
+.settings-section h4 {
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.toggles-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.toggle-switch .slider {
+    width: 40px;
+    height: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    position: relative;
+    transition: 0.3s;
+    border: 1px solid var(--glass-border);
+}
+
+.toggle-switch .slider::before {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--text-secondary);
+    top: 2px;
+    right: 3px; /* حالت RTL */
+    transition: 0.3s;
+}
+
+.toggle-switch input:checked + .slider {
+    background-color: var(--accent-cyan);
+}
+
+.toggle-switch input:checked + .slider::before {
+    background-color: #000;
+    transform: translateX(-20px); /* حرکت دایره به چپ در RTL */
+}
+
+/* ---------- دکمه‌های عملیاتی ---------- */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.action-buttons .glass-btn {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.subtle {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* ---------- ریسپانسیو برای موبایل ---------- */
+@media (max-width: 768px) {
+    .profile-content {
+        flex-direction: column;
+    }
+    .profile-sidebar {
+        width: 100%;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .action-buttons {
+        flex-direction: column;
+    }
+}

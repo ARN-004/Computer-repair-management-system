@@ -1,0 +1,311 @@
+/* تنظیمات کانتینر اصلی صفحه */
+.notifications-container {
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* هدر و تب‌ها */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.tabs-container {
+    display: flex;
+    background: rgba(0,0,0,0.2);
+    border-radius: 30px;
+    padding: 5px;
+    gap: 5px;
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 8px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.tab-btn.active {
+    background: rgba(100, 255, 218, 0.2);
+    color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(100,255,218,0.1);
+}
+
+.tab-content {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.tab-content.active {
+    display: flex;
+}
+
+/* ================= استایل تب 1 (صندوق ورودی) ================= */
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.toolbar-right {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-box i {
+    position: absolute;
+    right: 15px;
+    color: var(--text-secondary);
+}
+
+.search-box input {
+    padding-right: 40px;
+    border-radius: 25px;
+}
+
+/* کارت‌های پیام */
+.messages-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.message-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s;
+}
+
+.message-card.unread {
+    background: linear-gradient(90deg, rgba(100, 255, 218, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+    border-right: 3px solid var(--accent-cyan);
+}
+
+.card-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+}
+
+.unread .status-dot {
+    background: var(--accent-red);
+    box-shadow: 0 0 8px var(--accent-red);
+}
+
+.msg-info h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.msg-info p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.card-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.msg-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.btn-sm {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+}
+
+/* ================= استایل تب 2 (فرم ارسال) ================= */
+.send-form {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.form-row > label {
+    min-width: 100px;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+.recipients-box {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: rgba(100, 255, 218, 0.15);
+    color: var(--accent-cyan);
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.tag i { cursor: pointer; }
+
+.split-row { flex-grow: 1; }
+.text-center { text-align: center; }
+.glass-text { color: var(--text-secondary); }
+
+/* دکمه‌های رادیویی (اولویت) */
+.radio-group { display: flex; gap: 20px; }
+.radio-btn {
+    display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-secondary);
+}
+.radio-btn input { display: none; }
+.radio-mark {
+    width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--glass-border);
+    position: relative;
+}
+.radio-btn input:checked + .radio-mark::after {
+    content: ''; position: absolute; top: 3px; left: 3px; width: 6px; height: 6px;
+    border-radius: 50%;
+}
+.radio-mark.cyan::after { background: var(--accent-cyan); }
+.radio-mark.yellow::after { background: #fbbf24; }
+.radio-mark.red::after { background: var(--accent-red); }
+.radio-btn input:checked ~ span { color: var(--text-primary); }
+
+.center-actions { justify-content: center; margin-top: 10px; }
+
+/* ================= استایل تب 3 (مدیریت و جداول) ================= */
+.management-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 20px;
+    height: 100%;
+}
+
+.panel-section {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-section h2 { margin-bottom: 15px; font-size: 1.1rem; text-align: center;}
+
+.log-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.glass-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.glass-table th {
+    color: var(--accent-cyan);
+    padding: 10px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-table td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* سویچ تغییر وضعیت (Toggle) */
+.switch { position: relative; display: inline-block; width: 34px; height: 18px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(255,255,255,0.1); transition: .4s; border-radius: 34px; }
+.slider:before { position: absolute; content: ""; height: 12px; width: 12px; left: 3px; bottom: 3px; background-color: white; transition: .4s; border-radius: 50%; }
+input:checked + .slider { background-color: var(--accent-cyan); }
+input:checked + .slider:before { transform: translateX(16px); background-color: #000; }
+
+.mb-15 { margin-bottom: 15px; }
+.full-width { width: 100%; justify-content: center; }
+
+/* ================= مودال ویرایش قالب ================= */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); backdrop-filter: blur(5px);
+    display: none; justify-content: center; align-items: center; z-index: 1000;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal-content {
+    width: 500px; padding: 25px; display: flex; flex-direction: column; gap: 15px;
+}
+
+.template-editor-grid {
+    display: grid; grid-template-columns: 1fr 120px; gap: 15px;
+}
+
+.editor-tags {
+    display: flex; flex-direction: column; gap: 8px;
+    background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px;
+}
+
+.editor-tags span {
+    font-size: 0.75rem; background: rgba(255,255,255,0.1); padding: 5px;
+    border-radius: 5px; cursor: pointer; text-align: center;
+}
+.editor-tags span:hover { background: var(--accent-cyan); color: #000; }
