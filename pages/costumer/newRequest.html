@@ -1,0 +1,138 @@
+<div class="page-content">
+    <!-- هدر بالای صفحه -->
+    <header class="top-header">
+        <!-- عنوان صفحه -->
+        <h1 class="page-title">ثبت درخواست جدید</h1>
+        <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="badge">2</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- پنل اصلی فرم (شیشه‌ای) -->
+    <div class="form-container glass-panel">
+        <!-- فرم ثبت درخواست که به وسیله JS مدیریت می‌شود -->
+        <form id="repairRequestForm" class="repair-form">
+            
+            <!-- بخش اطلاعات دستگاه و عکس تکنسین -->
+            <div class="form-top-section">
+                <!-- ستون فیلدهای ورودی (سمت راست) -->
+                <div class="form-fields">
+                    <h3 class="section-title">اطلاعات دستگاه</h3>
+                    
+                    <!-- نوع دستگاه -->
+                    <div class="form-group">
+                        <label>نوع دستگاه: <i class="fas fa-info-circle tooltip-icon" title="لطفا نوع دستگاه خود را انتخاب کنید"></i></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-chevron-down dropdown-icon"></i>
+                            <select name="device_type" class="glass-input" required>
+                                <option value="" disabled selected>انتخاب کنید...</option>
+                                <option value="mobile">گوشی موبایل</option>
+                                <option value="laptop">لپ‌تاپ</option>
+                                <option value="pc">کامپیوتر (کیس)</option>
+                                <option value="printer">پرینتر</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- مدل دستگاه -->
+                    <div class="form-group">
+                        <label>مدل دستگاه: <i class="fas fa-info-circle tooltip-icon"></i></label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-mobile-alt input-icon"></i>
+                            <input type="text" name="device_model" class="glass-input" placeholder="مدل دستگاه" required>
+                        </div>
+                    </div>
+
+                    <!-- سریال نامبر -->
+                    <div class="form-group">
+                        <label>سریال نامبر دستگاه: <i class="fas fa-info-circle tooltip-icon"></i></label>
+                        <div class="input-wrapper">
+                            <input type="text" name="serial_number" class="glass-input" placeholder="سریال نامبر (optional)">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ستون تصویر تکنسین و پیام راهنما (سمت چپ) -->
+                <div class="form-illustration">
+                    <img src="technician-illustration.png" alt="تکنسین" class="tech-img">
+                    <div class="info-note glass-panel">
+                        <p>برای بررسی سریع‌تر، لطفاً اطلاعات دقیق دستگاه را وارد کنید.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- بخش شرح مشکل -->
+            <div class="form-group full-width">
+                <label class="section-title">شرح مشکل: <i class="fas fa-info-circle tooltip-icon"></i></label>
+                <div class="textarea-wrapper">
+                    <textarea name="problem_description" class="glass-input" rows="4" placeholder="شرح مشکل به نام درخواستتان را به صورت متنی وارد کنید..."></textarea>
+                    <button type="button" class="icon-btn mic-btn" id="voiceInputBtn"><i class="fas fa-microphone"></i></button>
+                </div>
+            </div>
+
+            <!-- بخش گزینه‌های تکمیلی -->
+            <div class="additional-options">
+                <h3 class="section-title text-center">گزینه‌های تکمیلی</h3>
+                <div class="options-grid">
+                    
+                    <!-- دکمه آپلود تصویر -->
+                    <div class="upload-group">
+                        <input type="file" id="deviceImage" name="device_image" hidden accept="image/*">
+                        <button type="button" class="glass-btn upload-btn" id="uploadTriggerBtn">
+                            <i class="fas fa-camera"></i> ارسال تصویر دستگاه
+                        </button>
+                    </div>
+
+                    <!-- چک باکس ها (تاگل) -->
+                    <div class="checkbox-group">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="need_courier">
+                            <span class="checkmark"></span>
+                            نیاز به پیک
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="urgent_priority">
+                            <span class="checkmark"></span>
+                            اولویت فوری
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="sms_notification" checked>
+                            <span class="checkmark"></span>
+                            اطلاع رسانی پیامکی
+                        </label>
+                    </div>
+
+                    <!-- بخش اطلاعات پیک (پیش‌فرض مخفی) -->
+                    <div id="courierDetailsSection" class="courier-details glass-panel" style="display: none; margin-top: 15px; padding: 15px;">
+                        <h4 class="section-title">اطلاعات ارسال پیک</h4>
+                        <div class="form-group">
+                            <label>شماره تماس:</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="courierPhone" name="courier_phone" class="glass-input">
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>آدرس دقیق:</label>
+                            <div class="textarea-wrapper">
+                                <textarea id="courierAddress" name="courier_address" class="glass-input" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <!-- دکمه‌های اکشن (پایین فرم) -->
+            <div class="form-actions">
+                <button type="button" class="glass-btn secondary-btn">بازگشت</button>
+                <button type="submit" class="glass-btn primary-btn submit-btn">
+                    ثبت درخواست <i class="fas fa-check"></i>
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
