@@ -1,0 +1,141 @@
+<div class="page-content">
+    <!-- هدر بالای صفحه -->
+    <header class="top-header">
+        <h1 class="page-title">سوابق تعمیرات</h1>
+        <div class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="badge">2</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- نوار کنترل: جستجو و فیلتر -->
+    <div class="control-bar glass-panel">
+        <!-- جستجو (سمت راست) -->
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" class="glass-input" placeholder="جستجو با کد پیگیری...">
+        </div>
+
+        <!-- فیلتر (سمت چپ) -->
+        <div class="filter-group">
+            <div class="custom-dropdown">
+                <button class="glass-btn filter-btn" id="filterToggleBtn">
+                    <i class="fas fa-filter"></i> فیلتر
+                </button>
+                            
+                <div class="dropdown-content glass-panel" id="filterOptions">
+                    <a href="#" data-filter="all" class="active">همه موارد</a>
+                    <a href="#" data-filter="status-ready">آماده تحویل</a>
+                    <a href="#" data-filter="status-progress">در حال تعمیر</a>
+                </div>
+            </div>
+            <!-- دراپ‌داون مرتب‌سازی -->
+            <div class="custom-dropdown">
+                <button class="glass-btn filter-btn"><i class="fas fa-sort"></i> مرتب‌سازی</button>
+                <div class="dropdown-content glass-panel" id="sortOptions">
+                    <a href="#" data-sort="newest" class="active">جدیدترین</a>
+                    <a href="#" data-sort="oldest">قدیمی‌ترین</a>
+                </div>
+            </div>
+
+            <!-- منوی دراپ‌داون فیلتر -->
+            <!-- <div class="filter-dropdown glass-panel" id="filterDropdown">
+                <ul>
+                    <li><i class="fas fa-laptop"></i> نوع دستگاه</li>
+                    <li><i class="fas fa-wrench"></i> وضعیت</li>
+                    <li><i class="far fa-calendar-alt"></i> بازه زمانی</li>
+                </ul>
+            </div> -->
+        </div>
+
+
+
+
+    </div>
+
+    <!-- لیست کارت‌های سوابق تعمیرات (با قابلیت اسکرول) -->
+    <div class="records-list">
+        
+        <!-- نمونه یک کارت سابقه تعمیر (تکرار شونده در حلقه Jinja در Flask) -->
+        <div class="record-card glass-panel" data-id="7332" data-status="status-progress" data-timestamp="1715472000">
+            <div class="card-info">
+                <p><i class="fas fa-hashtag"></i> <strong>شماره سفارش:</strong> 7332</p>
+                <p><i class="fas fa-laptop"></i> <strong>نوع دستگاه:</strong> لپ‌تاپ ایسوس</p>
+            </div>
+            <div class="card-info">
+                <p><i class="far fa-calendar-alt"></i> <strong>تاریخ ثبت:</strong> 1403/02/22</p>
+                <p><i class="fas fa-circle status-dot in-progress"></i> <strong>وضعیت:</strong> در حال تعمیر</p>
+            </div>
+            <div class="card-action">
+                <!-- با کلیک روی این دکمه، جاوااسکریپت اطلاعات را در مودال نمایش می‌دهد -->
+                <button class="glass-btn primary view-details-btn" data-order-id="7332">
+                    مشاهده جزئیات
+                </button>
+            </div>
+        </div>
+
+        <!-- نمونه کارت دوم (وضعیت متفاوت) -->
+        <div class="record-card glass-panel ready" data-id="7120" data-status="status-progress" data-timestamp="1715472020">
+            <div class="card-info">
+                <p><i class="fas fa-hashtag"></i> <strong>شماره سفارش:</strong> 7120</p>
+                <p><i class="fas fa-desktop"></i> <strong>نوع دستگاه:</strong> کیس کامپیوتر</p>
+            </div>
+            <div class="card-info">
+                <p><i class="far fa-calendar-alt"></i> <strong>تاریخ ثبت:</strong> 1403/01/15</p>
+                <p><i class="fas fa-circle status-dot ready"></i> <strong>وضعیت:</strong> آماده تحویل</p>
+            </div>
+            <div class="card-action">
+                <button class="glass-btn primary view-details-btn" data-order-id="7120">
+                    مشاهده جزئیات
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- مودال (پنجره پاپ‌آپ) جزئیات سفارش -->
+<div class="modal-overlay" id="detailsModal">
+    <div class="modal-box glass-panel">
+        <div class="modal-header">
+            <h2>جزئیات سفارش</h2>
+            <button class="icon-btn glass-btn close-modal-action"><i class="fas fa-times"></i></button>
+        </div>
+
+        <!-- محتوای قابل اسکرول مودال -->
+        <div class="modal-body scrollable">
+            <div class="detail-section">
+                <h3>شرح مشکل دستگاه:</h3>
+                <p id="modal-problemDesc">دستگاه روشن نمی‌شود و بوی سوختگی می‌دهد...</p>
+            </div>
+            <div class="detail-section">
+                <h3>اطلاعات ثبت‌شده توسط مشتری:</h3>
+                <p id="modal-customerInfo">درخواست حفظ اطلاعات هارد دیسک.</p>
+            </div>
+            <div class="detail-section">
+                <h3>اقلام و وسایل همراه:</h3>
+                <p id="modal-items">شارژر، کیف</p>
+            </div>
+            <div class="detail-section">
+                <h3>توضیح مراحل و کارهای انجام‌شده:</h3>
+                <ol class="timeline" id="modal-steps">
+                    <li>بررسی اولیه و باز کردن دستگاه (انجام شد)</li>
+                    <li>تعویض آی‌سی تغذیه (انجام شد)</li>
+                    <li>تست نهایی (در حال انجام)</li>
+                </ol>
+            </div>
+            <div class="detail-section">
+                <h3>نمایش فاکتور:</h3>
+                <a href="#" id="modal-invoiceBtn" class="glass-btn"><i class="fas fa-file-invoice"></i> دانلود / مشاهده فاکتور</a>
+            </div>
+            <div class="detail-section tech-name">
+                <p><strong>نام تعمیرکار:</strong> <span id="modal-techName">علی رضایی</span></p>
+            </div>
+            <div class="modal-footer">
+                <button class="glass-btn close-modal-action">بستن</button>
+            </div>
+        </div>
+    </div>
+</div>
