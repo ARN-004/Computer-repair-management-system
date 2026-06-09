@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ورود و ثبت‌نام | سامانه مدیریت تعمیرات</title>
+    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="./styles/auth.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+</head>
+<body>
+
+    <div class="auth-wrapper">
+        <div class="glass-panel auth-container">
+            
+            <div class="auth-header">
+                <div class="auth-logo">
+                    <i class="fa-solid fa-laptop-medical"></i>
+                </div>
+                <h2>سامانه مدیریت تعمیرات</h2>
+                <p>به بخش خدمات مشتریان خوش آمدید</p>
+            </div>
+
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">ورود به حساب</button>
+                <button class="tab-btn" onclick="switchTab('register')">ثبت‌نام مشتری</button>
+            </div>
+
+            <form id="loginForm" class="auth-form active" method="POST" action="/login">
+                <div class="input-group">
+                    <label for="login_username">نام کاربری یا شماره همراه</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" id="login_username" name="username" class="glass-input" placeholder="مثال: 09123456789" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="login_password">رمز عبور</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="login_password" name="password" class="glass-input" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" name="remember_me">
+                        <span class="checkmark"></span>
+                        مرا به خاطر بسپار
+                    </label>
+                    <a href="#" class="forgot-link">فراموشی رمز عبور؟</a>
+                </div>
+
+                <button type="submit" class="glass-btn primary-btn auth-submit">
+                    ورود به پنل کاربری <i class="fa-solid fa-arrow-left"></i>
+                </button>
+            </form>
+
+            <form id="registerForm" class="auth-form" method="POST" action="/register">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="reg_firstname">نام</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="reg_firstname" name="first_name" class="glass-input" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="reg_lastname">نام خانوادگی</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="reg_lastname" name="last_name" class="glass-input" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="reg_phone">شماره همراه (نام کاربری)</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" id="reg_phone" name="phone" class="glass-input" placeholder="09123456789" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="reg_email">ایمیل (اختیاری)</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="reg_email" name="email" class="glass-input" placeholder="example@mail.com">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label for="reg_password">رمز عبور</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="reg_password" name="password" class="glass-input" required>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="reg_confirm_password">تکرار رمز عبور</label>
+                        <div class="input-wrapper">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <input type="password" id="reg_confirm_password" name="confirm_password" class="glass-input" required>
+                        </div>
+                    </div>
+                </div>
+
+                <label class="custom-checkbox policy-check">
+                    <input type="checkbox" required>
+                    <span class="checkmark"></span>
+                    <a href="#" class="forgot-link">قوانین و مقررات</a> سامانه را می‌پذیرم.
+                </label>
+
+                <button type="submit" class="glass-btn primary-btn auth-submit">
+                    تکمیل ثبت‌نام و عضویت <i class="fa-solid fa-user-plus"></i>
+                </button>
+            </form>
+
+        </div>
+    </div>
+
+    <script>
+        function switchTab(tab) {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const tabs = document.querySelectorAll('.tab-btn');
+
+            tabs.forEach(t => t.classList.remove('active'));
+
+            if (tab === 'login') {
+                loginForm.classList.add('active');
+                registerForm.classList.remove('active');
+                tabs[0].classList.add('active');
+            } else {
+                loginForm.classList.remove('active');
+                registerForm.classList.add('active');
+                tabs[1].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

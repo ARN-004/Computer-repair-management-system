@@ -1,0 +1,241 @@
+/* -----------------------------------------------
+   استایل‌های اختصاصی صفحه ورود و ثبت نام (auth.css)
+   مبتنی بر متغیرهای رنگی و استایل شیشه‌ای base_deepseek.css
+-------------------------------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Vazirmatn', sans-serif;
+    /* اعمال بک‌گراند تیره و گرادیان نئونی مشابه بقیه بخش‌ها */
+    /* linear-gradient(135deg, var(--bg-color-1), var(--bg-color-2)); */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.auth-container {
+    padding: 35px 30px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 
+                inset 0 0 20px rgba(100, 255, 218, 0.02);
+}
+
+/* ---------- هدر فرم ---------- */
+.auth-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-logo {
+    font-size: 2.5rem;
+    color: var(--accent-cyan);
+    margin-bottom: 10px;
+    filter: drop-shadow(0 0 10px rgba(100, 255, 218, 0.4));
+}
+
+.auth-header h2 {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin: 0 0 8px 0;
+}
+
+.auth-header p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ---------- تب‌ها ---------- */
+.auth-tabs {
+    display: flex;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-sm);
+    padding: 5px;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 10px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    cursor: pointer;
+    border-radius: calc(var(--border-radius-sm) - 4px);
+    transition: var(--transition);
+}
+
+.tab-btn.active {
+    background: var(--glass-bg);
+    color: #fff;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- فرم‌ها و اینپوت‌ها ---------- */
+.auth-form {
+    display: none;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.auth-form.active {
+    display: flex;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-row .input-group {
+    flex: 1;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper i {
+    position: absolute;
+    right: 15px;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    pointer-events: none;
+}
+
+.input-wrapper .glass-input {
+    width: 100%;
+    padding: 12px 15px;
+    padding-right: 40px; /* ایجاد فضا برای آیکون سمت راست */
+    box-sizing: border-box;
+}
+
+/* اصلاح فضا برای اینپوت‌های دوتایی بدون آیکون */
+.form-row .input-wrapper .glass-input {
+    padding-right: 15px;
+}
+
+/* ---------- آپشن‌های اضافه فرم ---------- */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    margin-top: 5px;
+}
+
+.forgot-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.forgot-link:hover {
+    text-shadow: 0 0 8px rgba(100, 255, 218, 0.5);
+    text-decoration: underline;
+}
+
+/* چک‌باکس سفارشی منطبق بر فرم درخواست جدید شما */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+    font-size: 0.85rem;
+}
+
+.custom-checkbox input {
+    display: none;
+}
+
+.checkmark {
+    width: 16px;
+    height: 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background: rgba(100, 255, 218, 0.2);
+    border-color: var(--accent-cyan);
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.4);
+}
+
+.custom-checkbox input:checked ~ .checkmark::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    color: var(--accent-cyan);
+    font-size: 0.65rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.policy-check {
+    margin-top: 5px;
+    font-size: 0.8rem;
+}
+
+/* ---------- دکمه ثبت فرم ---------- */
+.auth-submit {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: var(--border-radius-sm);
+}
+
+.auth-submit.primary-btn {
+    background: linear-gradient(45deg, rgba(100, 255, 218, 0.15), rgba(100, 255, 218, 0.4));
+    border: 1px solid var(--accent-cyan);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(100, 255, 218, 0.15);
+}
+
+.auth-submit.primary-btn:hover {
+    background: linear-gradient(45deg, rgba(100, 255, 218, 0.3), rgba(100, 255, 218, 0.6));
+    box-shadow: 0 4px 25px rgba(100, 255, 218, 0.3);
+    transform: translateY(-2px);
+}
