@@ -1,0 +1,119 @@
+<div class="page-content">
+    <!-- هدر بالای صفحه -->
+    <header class="top-header">
+        <!-- عنوان وسط صفحه -->
+        <h1 class="page-title">مشاهده فاکتور نهایی</h1>
+        <!-- دکمه زنگوله سمت چپ با نشانگر -->
+        <div class="notification-icon" id="invoiceNotificationBtn" style="cursor: pointer;">
+                <i class="fas fa-bell"></i>
+                <span class="badge">2</span>
+        </div>
+    </header>
+
+    <!-- پنل شیشه‌ای اصلی دربرگیرنده فاکتور -->
+    <div class="glass-panel invoice-container">
+        
+        <!-- بخش بالایی فاکتور: شماره‌ها و اطلاعات کاربر -->
+        <header class="invoice-header">
+            <div class="header-titles">
+                <h2>فاکتور نهایی سفارش</h2>
+                <div class="invoice-meta">
+                    <span><strong>شماره فاکتور نهایی:</strong> #INV-1023</span>
+                    <span><strong>شماره سفارش:</strong> #ORD-456</span>
+                    <span><strong>تاریخ:</strong> 1403/02/15</span>
+                </div>
+            </div>
+            <div class="customer-info">
+                <p><strong>عالم‌السّر مشتری:</strong> [نام مشتری]</p>
+                <p><strong>شماره موبایل:</strong> [شماره موبایل]</p>
+            </div>
+        </header>
+
+        <!-- بخش مشخصات دستگاه -->
+        <section class="device-details glass-box">
+            <p><strong>نوع دستگاه:</strong> [موبایل]</p>
+            <p><strong>مدل دستگاه:</strong> Galaxy S23</p>
+            <p><strong>سریال نامبر:</strong> [SN-123456]</p>
+            <p><strong>شرح مشکل:</strong> [شکستگی صفحه نمایش]</p>
+        </section>
+
+        <!-- جدول خدمات و قطعات -->
+        <section class="invoice-table-wrapper">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <th>شرح خدمات/قطعات</th>
+                        <th>تعداد</th>
+                        <th>قیمت واحد (تومان)</th>
+                        <th>قیمت کل (تومان)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- ردیف‌های جدول (در فلسک با حلقه for تولید می‌شوند) -->
+                    <tr>
+                        <td>تعویض صفحه نمایش</td>
+                        <td>1</td>
+                        <td>350,000</td>
+                        <td>350,000</td>
+                    </tr>
+                    <tr>
+                        <td>بررسی برد اصلی</td>
+                        <td>1</td>
+                        <td>380,000</td>
+                        <td>380,000</td>
+                    </tr>
+                    <tr>
+                        <td>تعویض کل فلت</td>
+                        <td>1</td>
+                        <td>260,000</td>
+                        <td>260,000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- بخش پایینی فاکتور: جمع مبالغ، وضعیت پرداخت و یادداشت‌ها -->
+        <div class="invoice-footer">
+            <!-- سمت راست: وضعیت پرداخت و توضیحات -->
+            <div class="footer-notes">
+                <div class="payment-status-box glass-box">
+                    <h4>وضعیت پرداخت</h4>
+                    <!-- نشانگر وضعیت (تغییر کلاس در بک‌اند بین status-paid و status-unpaid) -->
+                    <div class="status-indicator status-unpaid">پرداخت نشده</div>
+                    <p class="status-note">پس از پرداخت آنلاین موفق، وضعیت پرداخت به طور خودکار به روز می‌شود.</p>
+                </div>
+                <div class="guarantee-notes">
+                    <p><strong>خلاصه:</strong> شرایط گارانتی تعمیرات: چنانچه تاریخ گارانتی منقضی نشده باشد، تعمیرات شامل گارانتی است.</p>
+                    <p><strong>تاریخ اتمام تعمیر:</strong> 1403/02/16</p>
+                </div>
+            </div>
+
+            <!-- سمت چپ: خلاصه هزینه‌ها -->
+            <div class="cost-summary glass-box">
+                <div class="summary-row">
+                    <span>جمع کل خدمات:</span>
+                    <span>1,082,000</span>
+                </div>
+                <div class="summary-row">
+                    <span>مالیات بر ارزش افزوده (%9):</span>
+                    <span>900,000</span> <!-- عدد تست -->
+                </div>
+                <div class="summary-row final-total">
+                    <span>مبلغ قابل پرداخت:</span>
+                    <span class="glow-text">3,457,000</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- دکمه‌های عملیاتی پایین فاکتور -->
+        <div class="action-buttons">
+            <button class="glass-btn primary large-btn" id="payBtn">
+                <i class="fas fa-credit-card"></i> پرداخت آنلاین
+            </button>
+            <button class="glass-btn large-btn" id="printBtn">
+                <i class="fas fa-print"></i> چاپ فاکتور
+            </button>
+        </div>
+
+    </div>
+</div>   
