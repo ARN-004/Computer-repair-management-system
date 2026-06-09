@@ -1,0 +1,95 @@
+<div class="page-content">
+    <!-- پنل شیشه ای اصلی -->
+    <div class="glass-panel profile-container">
+        
+        <!-- بخش هدر پروفایل -->
+        <div class="profile-header">
+            <h2>پروفایل کاربر</h2>
+        </div>
+
+        <!-- کانتینر اصلی محتوا شامل فرم و آواتار -->
+        <div class="profile-content">
+            
+            <!-- بخش آواتار و اطلاعات مختصر (سمت راست در طراحی) -->
+            <aside class="profile-sidebar">
+                <div class="avatar-wrapper">
+                    <img src="avatar-placeholder.png" alt="آواتار کاربر" class="avatar-img" id="avatarPreview">
+                    <!-- دکمه تغییر عکس پروفایل -->
+                    <button class="icon-btn camera-btn" id="cameraBtn" aria-label="تغییر عکس" type="button">📸</button>
+                    <!-- این اینپوت برای انتخاب فایل اضافه شده و مخفی است -->
+                    <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display: none;">
+                </div>
+                <h3 class="user-name">نام مشتری</h3>
+                <p class="user-role">مدیریت اطلاعات حساب کاربری</p>
+            </aside>
+
+            <!-- بخش فرم (سمت چپ در طراحی) که به فلسک متصل می‌شود -->
+            <form action="/update_profile" method="POST" class="profile-form">
+                
+                <!-- گرید 2 ستونه برای فیلدها -->
+                <div class="form-grid">
+                    <!-- هر گروه شامل اینپوت و نام آن است -->
+                    <div class="input-group">
+                        <label for="fullname">نام و نام خانوادگی 👤</label>
+                        <!-- خصوصیت name برای دریافت در فلسک ضروری است -->
+                        <input type="text" id="fullname" name="fullname" class="glass-input" placeholder="نام خود را وارد کنید">
+                    </div>
+                    <div class="input-group">
+                        <label for="username">نام کاربری 🆔</label>
+                        <input type="text" id="username" name="username" class="glass-input" placeholder="نام کاربری">
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">شماره تماس 📞</label>
+                        <input type="tel" id="phone" name="phone" class="glass-input" placeholder="09123456789">
+                    </div>
+                    <div class="input-group">
+                        <label for="email">ایمیل ✉️</label>
+                        <input type="email" id="email" name="email" class="glass-input" placeholder="example@mail.com">
+                    </div>
+                    <div class="input-group">
+                        <label for="address">آدرس 📍</label>
+                        <input type="text" id="address" name="address" class="glass-input" placeholder="آدرس پستی">
+                    </div>
+                    <div class="input-group">
+                        <label for="password">رمز عبور 🔒</label>
+                        <input type="password" id="password" name="password" class="glass-input" placeholder="••••••••">
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- بخش تنظیمات حساب (سوییچ ها) -->
+                <div class="settings-section">
+                    <h4>تنظیمات حساب</h4>
+                    <div class="toggles-flex">
+                        <label class="toggle-switch">
+                            <span>دریافت اعلانات</span>
+                            <input type="checkbox" name="notifications" checked>
+                            <span class="slider"></span>
+                        </label>
+                        <label class="toggle-switch">
+                            <span>فعال سازی پیامک</span>
+                            <input type="checkbox" name="sms_alerts">
+                            <span class="slider"></span>
+                        </label>
+                        <label class="toggle-switch">
+                            <span>نمایش وضعیت آنلاین</span>
+                            <input type="checkbox" name="online_status" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- دکمه‌های عملیاتی -->
+                <div class="action-buttons">
+                    <button type="submit" id="saveProfileBtn" class="glass-btn primary" style="display: none;">ذخیره تغییرات</button>
+                    <button type="button" id="editProfileBtn" class="glass-btn">ویرایش اطلاعات</button>
+                    <!-- اگر از روتر SPA استفاده می‌کنید، بهتر است لینک زیر توسط جاوااسکریپت کنترل شود -->
+                     <!-- انتقال به داشبورد -->
+                    <a href="/dashboard" class="glass-btn subtle">بازگشت به داشبورد</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>  

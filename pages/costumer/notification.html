@@ -1,0 +1,128 @@
+<div class="page-content">
+    <!-- هدر -->
+    <header class="top-header">
+        <h1 class="page-title">اعلانات</h1>
+        <div class="header-icons">
+            <div class="notification-icon">
+                <i class="fa-regular fa-bell"></i>
+                <span class="badge"></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- نوار کنترل -->
+    <div class="control-bar glass-panel">
+        <button class="glass-btn btn-mark-read" id="markAllReadBtn">
+            <i class="fa-solid fa-check-double"></i> علامت‌گذاری همه به عنوان خوانده شده
+        </button>
+        <div class="filter-search-group">
+            <!-- فیلتر نوع اعلان -->
+            <div class="filter-dropdown custom-dropdown">
+                <button class="glass-btn icon-btn"><i class="fa-solid fa-filter"></i> فیلتر</button>
+                <div class="dropdown-content glass-panel" id="filterDropdown">
+                    <a href="#" data-filter="all" class="active">همه اعلانات</a>
+                    <a href="#" data-filter="type-system">پیام‌های سیستم</a>
+                    <a href="#" data-filter="type-repair">وضعیت تعمیر</a>
+                </div>
+            </div>
+            <!-- مرتب‌سازی تاریخ -->
+            <div class="filter-dropdown custom-dropdown">
+                <button class="glass-btn icon-btn"><i class="fa-solid fa-sort"></i> مرتب‌سازی</button>
+                <div class="dropdown-content glass-panel" id="sortDropdown">
+                    <a href="#" data-sort="newest" class="active">جدیدترین</a>
+                    <a href="#" data-sort="oldest">قدیمی‌ترین</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- لیست اعلانات -->
+    <div class="notifications-list">
+        
+        <!-- اعلان خوانده نشده (تعمیر) -->
+        <div class="notification-card unread type-repair" data-id="101" data-timestamp="1719223800">
+            <div class="card-indicator"></div>
+            <div class="card-icon"><i class="fa-solid fa-wrench"></i></div>
+            <div class="card-content">
+                <div class="card-header">
+                    <h3>به‌روزرسانی وضعیت تعمیر: [نام دستگاه]</h3>
+                    <span class="unread-dot"></span>
+                </div>
+                <p class="preview-text">[توضیحات دقیق]: هزینه تعمیر شما مورد تایید قرار گرفته است و دستگاه شما وارد مرحله نهایی تعمیر شده است. پیش‌بینی می‌شود ظرف دو روز آینده آماده تحویل باشد.</p>
+            </div>
+            <div class="card-actions">
+                <span class="date-time">۱۴۰۳/۰۴/۰۵ - ۱۴:۳۰</span>
+                <div class="action-buttons">
+                    <button class="glass-btn btn-view">مشاهده کامل</button>
+                    <button class="glass-btn icon-btn btn-delete"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- اعلان خوانده نشده (سیستم) -->
+        <div class="notification-card unread type-system" data-id="103" data-timestamp="1719223801">
+            <div class="card-indicator"></div>
+            <div class="card-icon"><i class="fa-solid fa-bell"></i></div>
+            <div class="card-content">
+                <div class="card-header">
+                    <h3>به‌روزرسانی سیستم</h3>
+                    <span class="unread-dot"></span>
+                </div>
+                <p class="preview-text">نسخه جدید اپلیکیشن با قابلیت‌های بهبود یافته منتشر شد.</p>
+            </div>
+            <div class="card-actions">
+                <span class="date-time">۱۴۰۳/۰۴/۰۴ - ۱۰:۱۵</span>
+                <div class="action-buttons">
+                    <button class="glass-btn btn-view">مشاهده کامل</button>
+                    <button class="glass-btn icon-btn btn-delete"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- اعلان خوانده شده -->
+        <div class="notification-card read type-repair" data-id="102" data-timestamp="1719223802">
+            <div class="card-indicator"></div>
+            <div class="card-icon"><i class="fa-solid fa-wrench"></i></div>
+            <div class="card-content">
+                <div class="card-header">
+                    <h3>دریافت دستگاه در مرکز</h3>
+                </div>
+                <p class="preview-text">دستگاه شما با موفقیت توسط مرکز خدمات پذیرش شد.</p>
+            </div>
+            <div class="card-actions">
+                <span class="date-time">۱۴۰۳/۰۴/۰۱ - ۰۹:۰۰</span>
+                <div class="action-buttons">
+                    <button class="glass-btn btn-view">مشاهده کامل</button>
+                    <button class="glass-btn icon-btn btn-delete"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- مُدال جزئیات اعلان (پاپ‌آپ) -->
+<div class="modal-overlay" id="notificationModal">
+    <div class="modal-box glass-panel">
+        <div class="modal-header">
+            <h2 id="notifModalTitle">به‌روزرسانی وضعیت تعمیر: لپ‌تاپ ایسوس</h2>
+            <button class="glass-btn icon-btn close-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body" id="notifModalBody">
+            <!-- محتوا توسط JS تزریق می‌شود -->
+            <div class="detail-section">
+                <p>مشتری گرامی،</p>
+                <p>هزینه تعمیر دستگاه شما (لپ‌تاپ ایسوس مدل X509) توسط کارشناسان ما بررسی و تایید شده است. دستگاه هم‌اکنون وارد مرحله نهایی تعمیر (تعویض قطعه) شده است.</p>
+                <p>پیش‌بینی می‌شود فرآیند تعمیر ظرف <strong>دو روز آینده</strong> به پایان برسد و دستگاه آماده تحویل/ارسال گردد.</p>
+                <p>از صبر و شکیبایی شما سپاسگزاریم.</p>
+                <div class="modal-meta">کد پیگیری: #REQ-85472</div>
+            </div>
+        </div>
+        <div class="modal-footer" id="notifModalFooter">
+            <!-- دکمه‌ها توسط JS تزریق می‌شوند -->
+            <button class="glass-btn primary">پیگیری سفارش</button>
+            <button class="glass-btn close-modal-btn">بستن</button>
+        </div>
+    </div>
+</div>
